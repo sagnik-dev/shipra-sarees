@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Shipra Sarees — Haute Couture, Bridal Lehengas &amp; Handloom Archives</title>
+  <!-- Google Fonts: Playfair Display & Inter -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;display=swap"
+    rel="stylesheet" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            burgundy: {
+              DEFAULT: '#702C3B',
+              dark: '#541E2A',
+              light: '#8E3F51',
+            },
+            ivory: {
+              DEFAULT: '#F8F5EF',
+              surface: '#FCF9F3',
+              dim: '#EDE8DE',
+            },
+            gold: {
+              DEFAULT: '#B69A63',
+              muted: '#C7AE7D',
+              light: '#E8DCB8',
+            },
+            rosebeige: '#E8D9D3',
+            charcoal: {
+              DEFAULT: '#282320',
+              muted: '#736B65',
+              dark: '#1C1816',
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom Scrollbar & Luxury Touches */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #F8F5EF;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #B69A63;
+      border-radius: 2px;
+    }
+
+    .gold-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #B69A63, transparent);
+    }
+
+    .gold-border-subtle {
+      border-color: rgba(182, 154, 99, 0.28);
+    }
+
+    .fade-in {
+      animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Image Carousel transitions */
+    .carousel-image {
+      transition: opacity 0.5s ease-in-out, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+</head>
+
+<body
+  class="bg-ivory text-charcoal font-sans antialiased min-h-screen flex flex-col selection:bg-burgundy selection:text-white">
+  <!-- ================= 1. PERSISTENT GLOBAL HEADER ================= -->
+  <header
+    class="sticky top-0 z-50 bg-ivory-surface/95 backdrop-blur-md border-b gold-border-subtle transition-all duration-300">
+    <!-- Announcement Ribbon -->
+    <div
+      class="bg-burgundy text-[#FDFBF7] text-[11px] tracking-widest uppercase font-medium py-1.5 px-4 text-center border-b border-burgundy-dark/40 flex items-center justify-center gap-2">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+      Bridal Couture &amp; Festive Archives 2026 • Concierge Inquiries &amp; Bespoke Appointments
+    </div>
+    <!-- Main Navigation Bar -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Mobile Menu Button / Left Brand Links -->
+      <div class="flex items-center gap-4">
+        <button aria-label="Toggle Menu"
+          class="p-2 -ml-2 text-charcoal hover:text-burgundy focus:outline-none lg:hidden" onclick="toggleMobileMenu()">
+          <i class="w-5 h-5" data-lucide="menu"></i>
+        </button>
+        <div class="hidden lg:flex items-center gap-6 text-xs tracking-wider uppercase text-charcoal-muted font-medium">
+          <button class="hover:text-burgundy transition" onclick="switchScreen('home')">Home</button>
+          <button class="hover:text-burgundy text-burgundy font-semibold transition flex items-center gap-1"
+            onclick="filterByCat('lehenga'); switchScreen('catalogue');">
+            Bridal Lehengas <span class="w-1.5 h-1.5 rounded-full bg-burgundy"></span>
+          </button>
+          <button class="hover:text-burgundy transition"
+            onclick="filterByCat('saree'); switchScreen('catalogue');">Sarees</button>
+          <button class="hover:text-burgundy transition" onclick="switchScreen('catalogue')">All Couture</button>
+          <button class="hover:text-burgundy transition" onclick="switchScreen('detail')">Lookbook</button>
+        </div>
+      </div>
+      <!-- Center Logo / Wordmark -->
+      <div class="text-center cursor-pointer" onclick="switchScreen('home')">
+        <h1 class="font-serif text-2xl sm:text-3xl tracking-[0.22em] uppercase font-semibold text-charcoal">
+          Shipra Sarees
+        </h1>
+        <p class="text-[9px] tracking-[0.38em] uppercase text-gold -mt-0.5">Haute Couture &amp; Bridal Atelier</p>
+      </div>
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <button class="p-2 text-charcoal hover:text-burgundy flex items-center gap-1.5 text-xs font-medium"
+          onclick="switchScreen('admin-bulk')" title="Admin Media &amp; Bulk Import">
+          <i class="w-4 h-4 text-gold" data-lucide="folder-up"></i>
+          <span class="hidden md:inline text-[10px] uppercase tracking-wider text-gold font-semibold">Bulk Import</span>
+        </button>
+        <button class="p-2 text-charcoal hover:text-burgundy flex items-center gap-1.5 text-xs font-medium"
+          onclick="switchScreen('admin-dashboard')" title="Admin Management Portal">
+          <i class="w-4 h-4 text-gold" data-lucide="sliders"></i>
+          <span class="hidden md:inline text-[10px] uppercase tracking-wider text-gold font-semibold">Studio
+            Admin</span>
+        </button>
+        <button aria-label="Cart" class="p-2 relative text-charcoal hover:text-burgundy" onclick="switchScreen('bag')">
+          <i class="w-5 h-5" data-lucide="shopping-bag"></i>
+          <span
+            class="absolute top-1 right-1 w-4 h-4 bg-burgundy text-white rounded-full text-[10px] font-bold flex items-center justify-center"
+            id="cart-counter">2</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <!-- ================= 2. MAIN APPLICATION WORKSPACE ================= -->
+  <main class="flex-grow max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-4 sm:py-8" id="app-root">
+    <!-- ---------------- PAGE 1: HOME CURATION ---------------- -->
+    <section class="screen-view fade-in space-y-14 sm:space-y-20" id="screen-home">
+      <!-- 4.3 Hero Campaign: Bridal-First Presentation -->
+      <div
+        class="relative rounded-2xl overflow-hidden shadow-2xl bg-charcoal min-h-[560px] sm:min-h-[640px] flex items-end p-6 sm:p-14">
+        <img alt="Royal Indian Bride in Richly Detailed Bridal Lehenga"
+          class="absolute inset-0 w-full h-full object-cover object-top opacity-85 transition-transform duration-700 hover:scale-105"
+          src="images/bridal-lehenga.jpg" />
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal-dark/95 via-charcoal-dark/40 to-transparent"></div>
+        <div class="relative z-10 max-w-2xl text-white space-y-4">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 bg-burgundy/85 backdrop-blur-md rounded-full text-[10px] tracking-widest uppercase font-medium text-gold-light border border-gold/30">
+            Grand Bridal Couture 2026
+          </div>
+          <h2 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-tight">
+            Made for Your Most Beautiful Moments.
+          </h2>
+          <p class="text-ivory-dim text-xs sm:text-sm max-w-lg leading-relaxed font-light">
+            Discover bespoke bridal lehengas, hand-drawn zardozi karigari, and timeless heritage sarees for celebrations
+            that stay with you forever.
+          </p>
+          <div class="pt-2 flex flex-wrap gap-3">
+            <button
+              class="px-7 py-3.5 bg-burgundy hover:bg-burgundy-dark text-white text-xs tracking-widest uppercase font-semibold rounded shadow-lg transition flex items-center gap-2"
+              onclick="filterByCat('lehenga'); switchScreen('catalogue');">
+              Explore Bridal Lehengas <i class="w-3.5 h-3.5" data-lucide="arrow-right"></i>
+            </button>
+            <button
+              class="px-6 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white text-xs tracking-widest uppercase font-medium rounded border border-white/25 transition flex items-center gap-2"
+              onclick="filterByCat('saree'); switchScreen('catalogue');">
+              Discover Sarees
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- 4.4 Category Discovery -->
+      <div class="space-y-6">
+        <div class="text-center max-w-md mx-auto space-y-1">
+          <p class="text-gold text-[10px] tracking-[0.3em] uppercase font-bold">Curated Archives</p>
+          <h3 class="font-serif text-2xl sm:text-3xl text-charcoal">Discover by Occasion</h3>
+          <div class="gold-divider w-24 mx-auto mt-2"></div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <!-- Bridal Lehengas (Strongest Visual Prominence) -->
+          <div
+            class="col-span-2 group cursor-pointer relative rounded-xl overflow-hidden aspect-[16/10] sm:aspect-[4/3] bg-charcoal shadow-md"
+            onclick="filterByCat('lehenga'); switchScreen('catalogue');">
+            <img alt="Bridal Lehengas Showcase"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90"
+              src="images\spotlite-bride-lahenga.jpg" />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent flex flex-col justify-end p-5">
+              <span class="text-gold-light text-[10px] uppercase tracking-widest font-bold">Featured Spotlight</span>
+              <h4 class="font-serif text-white text-xl sm:text-2xl font-medium">Bridal Lehengas</h4>
+              <p class="text-xs text-ivory-dim mt-0.5 font-light">Handcrafted zardozi, raw silk velvet &amp; royal
+                flares</p>
+            </div>
+          </div>
+          <!-- Designer Sarees -->
+          <div class="group cursor-pointer relative rounded-xl overflow-hidden aspect-[4/5] bg-ivory-dim shadow-sm"
+            onclick="filterByCat('saree'); switchScreen('catalogue');">
+            <img alt="Designer Sarees" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              src="images\Designer-Sarees.jpg" />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-transparent to-transparent flex flex-col justify-end p-4">
+              <span class="text-gold-light text-[10px] uppercase tracking-wider font-semibold">Handloom Weaves</span>
+              <h4 class="font-serif text-white text-base sm:text-lg">Designer Sarees</h4>
+            </div>
+          </div>
+          <!-- Wedding Guest & Festive -->
+          <div class="group cursor-pointer relative rounded-xl overflow-hidden aspect-[4/5] bg-ivory-dim shadow-sm"
+            onclick="filterByCat('festive'); switchScreen('catalogue');">
+            <img alt="Festive Wear &amp; Organza"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              src="images\featherlight-silks.jpg" />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-transparent to-transparent flex flex-col justify-end p-4">
+              <span class="text-gold-light text-[10px] uppercase tracking-wider font-semibold">Festive &amp;
+                Reception</span>
+              <h4 class="font-serif text-white text-base sm:text-lg">Featherlight Silks</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 4.5 Bridal Lehenga Dedicated Showcase with Auto-sliding Indicators -->
+      <div class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b gold-border-subtle pb-4">
+          <div>
+            <span class="text-gold text-[10px] tracking-[0.3em] uppercase font-bold">Royal Trousseau</span>
+            <h3 class="font-serif text-2xl sm:text-3xl text-charcoal">The Bridal Lehenga Atelier</h3>
+          </div>
+          <button
+            class="text-xs tracking-widest uppercase font-semibold text-burgundy hover:text-burgundy-dark flex items-center gap-1"
+            onclick="filterByCat('lehenga'); switchScreen('catalogue');">
+            Explore All Bridal Lehengas <i class="w-3.5 h-3.5" data-lucide="arrow-right"></i>
+          </button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Bridal Card 1 (Interactive Multi-image Carousel) -->
+          <div
+            class="product-card group bg-ivory-surface rounded-xl overflow-hidden border gold-border-subtle hover:shadow-xl transition"
+            data-active-index="0" data-images='["images/Noor-main.jpg", "images/noor-2.jpg", "images/noor-3.jpg"]'>
+            <div class="relative aspect-[3/4] overflow-hidden bg-ivory-dim cursor-pointer"
+              onclick="switchScreen('detail')">
+              <img alt="Noor-e-Aroosi Bridal Lehenga"
+                class="carousel-image w-full h-full object-cover group-hover:scale-105" src="images/Noor-main.jpg" />
+              <span
+                class="absolute top-2.5 left-2.5 bg-burgundy text-white text-[9px] uppercase tracking-widest px-2.5 py-0.5 rounded font-medium shadow-sm">Bridal
+                Couture</span>
+              <span
+                class="absolute bottom-2.5 right-2.5 bg-black/65 backdrop-blur text-white text-[10px] px-2 py-0.5 rounded flex items-center gap-1">
+                <i class="w-3 h-3 text-gold" data-lucide="video"></i> Drape 4K
+              </span>
+              <!-- Auto-carousel position dots -->
+              <div
+                class="carousel-dots absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2 py-1 bg-black/40 backdrop-blur rounded-full">
+                <span class="dot w-1.5 h-1.5 rounded-full bg-white"></span>
+                <span class="dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+                <span class="dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+              </div>
+            </div>
+            <div class="p-4 space-y-2">
+              <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Raw Silk &amp; Zardozi Kalis</p>
+              <h4 class="font-serif text-base font-medium text-charcoal group-hover:text-burgundy transition">
+                Noor-e-Aroosi Crimson Bridal Lehenga</h4>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="font-serif text-lg font-bold text-burgundy">₹78,500</span>
+                  <span class="text-xs text-charcoal-muted ml-1.5">Made-to-Measure</span>
+                </div>
+                <button class="text-xs uppercase tracking-wider text-gold font-semibold hover:underline"
+                  onclick="switchScreen('detail')">View</button>
+              </div>
+            </div>
+          </div>
+          <!-- Bridal Card 2 -->
+          <div
+            class="product-card group bg-ivory-surface rounded-xl overflow-hidden border gold-border-subtle hover:shadow-xl transition"
+            data-active-index="0"
+            data-images='["images/Gulrukh-main.jpg", "images/Gulrukh-2.jpg","images/Gulrukh-3.jpg"]'>
+            <div class="relative aspect-[3/4] overflow-hidden bg-ivory-dim cursor-pointer"
+              onclick="switchScreen('detail')">
+              <img alt="Gulrukh Velvet Rose Lehenga"
+                class="carousel-image w-full h-full object-cover group-hover:scale-105" src="images/Gulrukh-main.jpg" />
+              <span
+                class="absolute top-2.5 left-2.5 bg-gold text-charcoal text-[9px] uppercase tracking-widest px-2.5 py-0.5 rounded font-medium shadow-sm">Heritage
+                Velvet</span>
+              <div
+                class="carousel-dots absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2 py-1 bg-black/40 backdrop-blur rounded-full">
+                <span class="dot w-1.5 h-1.5 rounded-full bg-white"></span>
+                <span class="dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+                <span class="dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+              </div>
+            </div>
+            <div class="p-4 space-y-2">
+              <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Hand-cut Gota &amp; Mukaish</p>
+              <h4 class="font-serif text-base font-medium text-charcoal group-hover:text-burgundy transition">Gulrukh
+                Velvet Rose Couture Lehenga</h4>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="font-serif text-lg font-bold text-burgundy">₹64,000</span>
+                  <span class="text-xs text-charcoal-muted ml-1.5">Bespoke Fitting</span>
+                </div>
+                <button class="text-xs uppercase tracking-wider text-gold font-semibold hover:underline"
+                  onclick="switchScreen('detail')">View</button>
+              </div>
+            </div>
+          </div>
+          <!-- Bridal Card 3 -->
+          <div
+            class="product-card group bg-ivory-surface rounded-xl overflow-hidden border gold-border-subtle hover:shadow-xl transition"
+            data-active-index="0"
+            data-images='["images/Mehrunisa-main.jpg", "images/Mehrunisa-2.jpg","images/Mehrunisa-3.jpg"]'>
+            <div class="relative aspect-[3/4] overflow-hidden bg-ivory-dim cursor-pointer"
+              onclick="switchScreen('detail')">
+              <img alt="Mehrunisa Gold Tissue Lehenga"
+                class="carousel-image w-full h-full object-cover group-hover:scale-105"
+                src="images/Mehrunisa-main.jpg" />
+              <span
+                class="absolute top-2.5 left-2.5 bg-burgundy text-white text-[9px] uppercase tracking-widest px-2.5 py-0.5 rounded font-medium shadow-sm">Reception
+                Star</span>
+              <div
+                class="carousel-dots absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2 py-1 bg-black/40 backdrop-blur rounded-full">
+                <span class="dot w-1.5 h-1.5 rounded-full bg-white"></span>
+                <span class="dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+                <span class="dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+              </div>
+            </div>
+            <div class="p-4 space-y-2">
+              <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Featherweight Metallic Weave</p>
+              <h4 class="font-serif text-base font-medium text-charcoal group-hover:text-burgundy transition">Mehrunisa
+                Gold Tissue Lehenga</h4>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="font-serif text-lg font-bold text-burgundy">₹56,000</span>
+                  <span class="text-xs text-charcoal-muted ml-1.5">Silk Satin Lined</span>
+                </div>
+                <button class="text-xs uppercase tracking-wider text-gold font-semibold hover:underline"
+                  onclick="switchScreen('detail')">View</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 4.8 Editorial Brand Campaign Spread -->
+      <div
+        class="bg-ivory-surface border gold-border-subtle rounded-2xl p-6 sm:p-12 grid sm:grid-cols-2 gap-8 items-center">
+        <div class="space-y-4">
+          <span class="text-gold text-[10px] tracking-[0.3em] uppercase font-bold">Artisanal Weaving &amp;
+            Embroidery</span>
+          <h3 class="font-serif text-2xl sm:text-4xl text-charcoal leading-tight">Tradition, Reimagined for Today.</h3>
+          <p class="text-charcoal-muted text-xs sm:text-sm leading-relaxed">
+            Every bridal lehenga and authentic saree is born from weeks of intricate craftsmanship. We preserve
+            ancestral naksha graph designs, hand-twisted katan silken threads, and authentic antique zari to adorn
+            brides across generations.
+          </p>
+          <div class="pt-2 flex items-center gap-6">
+            <div>
+              <div class="font-serif text-xl sm:text-2xl text-burgundy font-bold">400+</div>
+              <div class="text-[10px] uppercase tracking-wider text-charcoal-muted">Hours Per Bridal Kalidar</div>
+            </div>
+            <div class="h-8 w-px bg-gold/30"></div>
+            <div>
+              <div class="font-serif text-xl sm:text-2xl text-burgundy font-bold">100%</div>
+              <div class="text-[10px] uppercase tracking-wider text-charcoal-muted">Verified Pure Silks</div>
+            </div>
+          </div>
+        </div>
+        <div class="relative rounded-xl overflow-hidden shadow-md">
+          <img alt="Artisan handloom embroidery" class="w-full h-72 object-cover" src="images/Artisanal-footer.jpg" />
+        </div>
+      </div>
+      <!-- 4.10 Instagram Gallery Integration -->
+      <div class="space-y-4">
+        <div class="flex items-end justify-between">
+          <div>
+            <p class="text-gold text-[10px] tracking-[0.3em] uppercase font-bold">Curated Journal</p>
+            <h4 class="font-serif text-xl text-charcoal">@shipra.sarees on Instagram</h4>
+          </div>
+          <a class="text-xs uppercase tracking-wider text-burgundy font-semibold hover:underline flex items-center gap-1"
+            href="https://www.instagram.com/shipr.asarees/" target="_blank">
+            Follow Atelier <i class="w-3 h-3" data-lucide="external-link"></i>
+          </a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="rounded-xl overflow-hidden aspect-square bg-ivory-dim relative group">
+            <img alt="Insta 1" class="w-full h-full object-cover group-hover:scale-105 transition"
+              src="images/ig-1.jpg" />
+          </div>
+          <div class="rounded-xl overflow-hidden aspect-square bg-ivory-dim relative group">
+            <img alt="Insta 2" class="w-full h-full object-cover group-hover:scale-105 transition"
+              src="images/ig-2.jpg" />
+          </div>
+          <div class="rounded-xl overflow-hidden aspect-square bg-ivory-dim relative group">
+            <img alt="Insta 3" class="w-full h-full object-cover group-hover:scale-105 transition"
+              src="images/ig-3.jpg" />
+          </div>
+          <div class="rounded-xl overflow-hidden aspect-square bg-ivory-dim relative group">
+            <img alt="Insta 4" class="w-full h-full object-cover group-hover:scale-105 transition"
+              src="images/ig-4.jpg" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ---------------- PAGE 2: COUTURE CATALOGUE ---------------- -->
+    <section class="screen-view hidden fade-in space-y-6" id="screen-catalogue">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b gold-border-subtle pb-6">
+        <div>
+          <span class="text-gold text-[10px] tracking-[0.3em] uppercase font-bold">Couture Archives</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-charcoal" id="catalogue-heading">All Couture &amp; Bridal
+            Archives</h2>
+          <p class="text-charcoal-muted text-xs mt-1" id="catalogue-count">Displaying 6 Verified Creations</p>
+        </div>
+        <!-- Filter Category Tabs -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0">
+          <button
+            class="cat-tab px-3.5 py-1.5 bg-burgundy text-white rounded text-xs uppercase tracking-wider font-medium"
+            id="tab-all" onclick="filterByCat('all')">All (6)</button>
+          <button
+            class="cat-tab px-3.5 py-1.5 bg-ivory-surface border gold-border-subtle rounded text-xs uppercase tracking-wider hover:border-burgundy"
+            id="tab-lehenga" onclick="filterByCat('lehenga')">Bridal Lehengas (3)</button>
+          <button
+            class="cat-tab px-3.5 py-1.5 bg-ivory-surface border gold-border-subtle rounded text-xs uppercase tracking-wider hover:border-burgundy"
+            id="tab-saree" onclick="filterByCat('saree')">Sarees (3)</button>
+        </div>
+      </div>
+      <!-- Product Cards Grid with Auto-Cycling Carousels (Pause on hover) -->
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" id="products-grid">
+        <!-- Item 1: Bridal Lehenga -->
+        <div
+          class="product-item lehenga bg-ivory-surface rounded-xl overflow-hidden border gold-border-subtle hover:shadow-xl transition group flex flex-col product-card"
+          data-active-index="0" data-images='["images/Noor-main.jpg", "images/noor-2.jpg" ,"images/noor-3.jpg"]'>
+          <div class="relative aspect-[3/4] overflow-hidden bg-ivory-dim cursor-pointer"
+            onclick="switchScreen('detail')">
+            <img alt="Noor-e-Aroosi Bridal Lehenga"
+              class="carousel-image w-full h-full object-cover group-hover:scale-105" src="images/Noor-main.jpg" />
+            <span
+              class="absolute top-2 left-2 bg-burgundy text-white text-[9px] uppercase tracking-widest px-2 py-0.5 rounded font-medium">Bridal
+              Lehenga</span>
+            <span
+              class="absolute bottom-2 right-2 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-0.5 rounded flex items-center gap-1">
+              <i class="w-3 h-3 text-gold" data-lucide="video"></i> Reel
+            </span>
+            <div
+              class="carousel-dots absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2 py-0.5 bg-black/40 backdrop-blur rounded-full">
+              <span class="dot w-1.5 h-1.5 rounded-full bg-white"></span>
+              <span class="dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+              <span class="dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+            </div>
+          </div>
+          <div class="p-3.5 sm:p-4 flex-grow flex flex-col justify-between space-y-2">
+            <div>
+              <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Raw Silk &amp; Zardozi</p>
+              <h4
+                class="font-serif text-sm sm:text-base font-medium text-charcoal group-hover:text-burgundy transition">
+                Noor-e-Aroosi Crimson Lehenga</h4>
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="font-serif text-base sm:text-lg font-bold text-burgundy">₹78,500</span>
+              <button class="text-xs uppercase tracking-wider text-gold font-semibold hover:underline"
+                onclick="switchScreen('detail')">View</button>
+            </div>
+          </div>
+        </div>
+        <!-- Item 2: Saree -->
+        <div
+          class="product-item saree bg-ivory-surface rounded-xl overflow-hidden border gold-border-subtle hover:shadow-xl transition group flex flex-col product-card"
+          data-active-index="0" data-images='["images/Designer-Sarees.jpg"]'>
+          <div class="relative aspect-[3/4] overflow-hidden bg-ivory-dim cursor-pointer"
+            onclick="switchScreen('detail')">
+            <img alt="Maharani Crimson Saree" class="carousel-image w-full h-full object-cover group-hover:scale-105"
+              src="images/Designer-Sarees.jpg" />
+            <span
+              class="absolute top-2 left-2 bg-burgundy text-white text-[9px] uppercase tracking-widest px-2 py-0.5 rounded font-medium">Katan
+              Saree</span>
+            <div
+              class="carousel-dots absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2 py-0.5 bg-black/40 backdrop-blur rounded-full">
+              <span class="dot w-1.5 h-1.5 rounded-full bg-white"></span>
+            </div>
+          </div>
+          <div class="p-3.5 sm:p-4 flex-grow flex flex-col justify-between space-y-2">
+            <div>
+              <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Pit Loom Kadhwa</p>
+              <h4
+                class="font-serif text-sm sm:text-base font-medium text-charcoal group-hover:text-burgundy transition">
+                Maharani Crimson Banarasi</h4>
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="font-serif text-base sm:text-lg font-bold text-burgundy">₹24,500</span>
+              <button class="text-xs uppercase tracking-wider text-gold font-semibold hover:underline"
+                onclick="switchScreen('detail')">View</button>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3: Bridal Lehenga -->
+        <div
+          class="product-item lehenga bg-ivory-surface rounded-xl overflow-hidden border gold-border-subtle hover:shadow-xl transition group flex flex-col product-card"
+          data-active-index="0"
+          data-images='["images/Mehrunisa-main.jpg","images/Mehrunisa-2.jpg","images/Mehrunisa-3.jpg"]'>
+          <div class="relative aspect-[3/4] overflow-hidden bg-ivory-dim cursor-pointer"
+            onclick="switchScreen('detail')">
+            <img alt="Mehrunisa Gold Tissue Lehenga"
+              class="carousel-image w-full h-full object-cover group-hover:scale-105" src="images/Mehrunisa-main.jpg" />
+            <span
+              class="absolute top-2 left-2 bg-gold text-charcoal text-[9px] uppercase tracking-widest px-2 py-0.5 rounded font-medium">Tissue
+              Bridal</span>
+            <div
+              class="carousel-dots absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2 py-0.5 bg-black/40 backdrop-blur rounded-full">
+              <span class="dot w-1.5 h-1.5 rounded-full bg-white"></span>
+              <span class="dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+              <span class="dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+            </div>
+          </div>
+          <div class="p-3.5 sm:p-4 flex-grow flex flex-col justify-between space-y-2">
+            <div>
+              <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Metallic Sheen Tissue</p>
+              <h4
+                class="font-serif text-sm sm:text-base font-medium text-charcoal group-hover:text-burgundy transition">
+                Mehrunisa Gold Tissue Lehenga</h4>
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="font-serif text-base sm:text-lg font-bold text-burgundy">₹56,000</span>
+              <button class="text-xs uppercase tracking-wider text-gold font-semibold hover:underline"
+                onclick="switchScreen('detail')">View</button>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4: Saree -->
+        <div
+          class="product-item saree bg-ivory-surface rounded-xl overflow-hidden border gold-border-subtle hover:shadow-xl transition group flex flex-col product-card"
+          data-active-index="0" data-images='["images/sarees.jpg"]'>
+          <div class="relative aspect-[3/4] overflow-hidden bg-ivory-dim cursor-pointer"
+            onclick="switchScreen('detail')">
+            <img alt="Champagne Gold Tissue Saree"
+              class="carousel-image w-full h-full object-cover group-hover:scale-105" src="images/sarees.jpg" />
+            <span
+              class="absolute top-2 left-2 bg-charcoal text-white text-[9px] uppercase tracking-widest px-2 py-0.5 rounded font-medium">Pure
+              Organza</span>
+          </div>
+          <div class="p-3.5 sm:p-4 flex-grow flex flex-col justify-between space-y-2">
+            <div>
+              <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Featherlight Zari</p>
+              <h4
+                class="font-serif text-sm sm:text-base font-medium text-charcoal group-hover:text-burgundy transition">
+                Champagne Organza Saree</h4>
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="font-serif text-base sm:text-lg font-bold text-burgundy">₹18,900</span>
+              <button class="text-xs uppercase tracking-wider text-gold font-semibold hover:underline"
+                onclick="switchScreen('detail')">View</button>
+            </div>
+          </div>
+        </div>
+        <!-- Item 5: Bridal Lehenga -->
+        <div
+          class="product-item lehenga bg-ivory-surface rounded-xl overflow-hidden border gold-border-subtle hover:shadow-xl transition group flex flex-col product-card"
+          data-active-index="0" data-images='["images/Gulrukh-main.jpg","images/Gulrukh-2.jpg","images/Gulrukh-3.jpg"]'>
+          <div class="relative aspect-[3/4] overflow-hidden bg-ivory-dim cursor-pointer"
+            onclick="switchScreen('detail')">
+            <img alt="Gulrukh Velvet Rose Lehenga"
+              class="carousel-image w-full h-full object-cover group-hover:scale-105" src="images/Gulrukh-main.jpg" />
+            <span
+              class="absolute top-2 left-2 bg-burgundy text-white text-[9px] uppercase tracking-widest px-2 py-0.5 rounded font-medium">Velvet
+              Royal</span>
+          </div>
+          <div class="p-3.5 sm:p-4 flex-grow flex flex-col justify-between space-y-2">
+            <div>
+              <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Mukaish &amp; Zari</p>
+              <h4
+                class="font-serif text-sm sm:text-base font-medium text-charcoal group-hover:text-burgundy transition">
+                Gulrukh Velvet Rose Lehenga</h4>
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="font-serif text-base sm:text-lg font-bold text-burgundy">₹64,000</span>
+              <button class="text-xs uppercase tracking-wider text-gold font-semibold hover:underline"
+                onclick="switchScreen('detail')">View</button>
+            </div>
+          </div>
+        </div>
+        <!-- Item 6: Saree -->
+        <div
+          class="product-item saree bg-ivory-surface rounded-xl overflow-hidden border gold-border-subtle hover:shadow-xl transition group flex flex-col product-card"
+          data-active-index="0" data-images='["images/sarees-2.jpg"]'>
+          <div class="relative aspect-[3/4] overflow-hidden bg-ivory-dim cursor-pointer"
+            onclick="switchScreen('detail')">
+            <img alt="Mayil Emerald Kanjivaram" class="carousel-image w-full h-full object-cover group-hover:scale-105"
+              src="images/sarees-2.jpg" />
+            <span
+              class="absolute top-2 left-2 bg-burgundy text-white text-[9px] uppercase tracking-widest px-2 py-0.5 rounded font-medium">Kanjivaram</span>
+          </div>
+          <div class="p-3.5 sm:p-4 flex-grow flex flex-col justify-between space-y-2">
+            <div>
+              <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Korvai Temple Border</p>
+              <h4
+                class="font-serif text-sm sm:text-base font-medium text-charcoal group-hover:text-burgundy transition">
+                Mayil Emerald Kanjivaram</h4>
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="font-serif text-base sm:text-lg font-bold text-burgundy">₹28,900</span>
+              <button class="text-xs uppercase tracking-wider text-gold font-semibold hover:underline"
+                onclick="switchScreen('detail')">View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ---------------- PAGE 3: PRODUCT DETAIL (BRIDAL & SAREE LOOKBOOK) ---------------- -->
+    <section class="screen-view hidden fade-in space-y-10" id="screen-detail">
+      <div class="text-xs uppercase tracking-widest text-charcoal-muted flex items-center gap-2">
+        <button class="hover:text-burgundy" onclick="switchScreen('catalogue')">Archives</button>
+        <span>/</span>
+        <span class="text-gold">Bridal Haute Couture</span>
+        <span>/</span>
+        <span class="text-charcoal font-semibold">Noor-e-Aroosi Crimson Bridal Lehenga</span>
+      </div>
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <!-- Visual Gallery Left (7 Cols) -->
+        <div class="lg:col-span-7 space-y-4">
+          <div
+            class="relative rounded-2xl overflow-hidden bg-ivory-dim border gold-border-subtle aspect-[4/5] shadow-lg group">
+            <img alt="Bridal Lehenga Detail View" class="w-full h-full object-cover transition-transform duration-300"
+              id="main-product-img" src="images/Noor-main.jpg" />
+            <div
+              class="absolute top-4 left-4 bg-burgundy text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded font-medium">
+              100% Pure Silk &amp; Zari Certified
+            </div>
+            <div
+              class="absolute bottom-4 left-4 right-4 flex justify-between items-center bg-black/40 backdrop-blur-md p-3 rounded-lg text-white text-xs">
+              <div class="flex items-center gap-2">
+                <i class="w-4 h-4 text-gold" data-lucide="video"></i>
+                <span>4K Fabric Drape &amp; Flare Kinematics</span>
+              </div>
+              <button class="text-gold uppercase tracking-wider font-semibold hover:underline">Watch Reel</button>
+            </div>
+          </div>
+          <!-- Thumbnails -->
+          <div class="grid grid-cols-4 gap-3">
+            <button class="detail-thumb rounded-lg overflow-hidden border-2 border-burgundy aspect-square"
+              onclick="setMainImage('images/Noor-main.jpg', this)">
+              <img alt="Front Flare" class="w-full h-full object-cover" src="images/Noor-main.jpg" />
+            </button>
+            <button class="detail-thumb rounded-lg overflow-hidden border gold-border-subtle aspect-square"
+              onclick="setMainImage('images/noor-2.jpg', this)">
+              <img alt="Embroidery Macro" class="w-full h-full object-cover" src="images/noor-2.jpg" />
+            </button>
+            <button class="detail-thumb rounded-lg overflow-hidden border gold-border-subtle aspect-square"
+              onclick="setMainImage('images/noor-3.jpg', this)">
+              <img alt="Zari Workmanship" class="w-full h-full object-cover" src="images/noor-3.jpg" />
+            </button>
+            <button class="detail-thumb rounded-lg overflow-hidden border gold-border-subtle aspect-square"
+              onclick="setMainImage('images/noor-4-model.jpg', this)">
+              <img alt="Back &amp; Dupatta" class="w-full h-full object-cover" src="images/noor-4-model.jpg" />
+            </button>
+          </div>
+        </div>
+        <!-- Specifications & Conversion Right (5 Cols) -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="space-y-2">
+            <span class="text-gold text-[10px] tracking-[0.3em] uppercase font-bold">Bridal Masterpiece • Code
+              SS-BL-204</span>
+            <h2 class="font-serif text-3xl sm:text-4xl text-charcoal">Noor-e-Aroosi Crimson Bridal Lehenga</h2>
+            <div class="flex items-baseline gap-3 pt-1">
+              <span class="font-serif text-3xl text-burgundy font-bold">₹78,500</span>
+              <span class="text-charcoal-muted line-through text-sm">₹89,000</span>
+              <span class="text-xs bg-gold/15 text-gold px-2 py-0.5 rounded uppercase font-semibold">Trousseau
+                Special</span>
+            </div>
+            <p class="text-xs text-charcoal-muted">Includes heavy double dupattas, custom-tailored cancan flare, and
+              insured door-to-door transit.</p>
+          </div>
+          <!-- Atelier Customization Options -->
+          <div class="p-4 bg-ivory-surface rounded-xl border gold-border-subtle space-y-3">
+            <h4 class="font-serif text-sm font-semibold text-charcoal">Bespoke Bridal Tailoring</h4>
+            <div class="space-y-2 text-xs">
+              <label
+                class="flex items-center justify-between p-2.5 rounded border border-burgundy bg-burgundy/5 cursor-pointer">
+                <div class="flex items-center gap-2">
+                  <input checked="" class="text-burgundy focus:ring-0" name="lehenga-fit" type="radio" />
+                  <span>Made-to-Measure (Video Call Fitting Included)</span>
+                </div>
+                <span class="text-[10px] uppercase font-semibold text-burgundy">Complimentary</span>
+              </label>
+              <label
+                class="flex items-center justify-between p-2.5 rounded border gold-border-subtle hover:border-gold cursor-pointer">
+                <div class="flex items-center gap-2">
+                  <input class="text-burgundy focus:ring-0" name="lehenga-fit" type="radio" />
+                  <span>Semi-Stitched Fabric (Self-Tailored)</span>
+                </div>
+                <span class="text-[10px] uppercase font-semibold text-charcoal">Immediate Dispatch</span>
+              </label>
+            </div>
+          </div>
+          <!-- Actions -->
+          <div class="space-y-3 pt-2">
+            <button
+              class="w-full py-4 bg-burgundy hover:bg-burgundy-dark text-white text-xs tracking-widest uppercase font-semibold rounded-lg shadow-xl transition flex items-center justify-center gap-2"
+              onclick="addToBagAndOpen('Noor-e-Aroosi Crimson Bridal Lehenga', '₹78,500', 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&amp;fit=crop&amp;w=200&amp;q=80')">
+              <i class="w-4 h-4 text-gold" data-lucide="lock"></i> Acquire Bridal Heirloom — ₹78,500
+            </button>
+            <a class="w-full py-3.5 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#128C7E] border border-[#25D366]/30 text-xs tracking-widest uppercase font-semibold rounded-lg transition flex items-center justify-center gap-2"
+              href="https://wa.me/?text=Hello%20Shipra%20Sarees,%20I%20would%20like%20to%20enquire%20about%20Noor-e-Aroosi%20Bridal%20Lehenga%20(Code%20SS-BL-204)"
+              target="_blank">
+              <i class="w-4 h-4" data-lucide="message-circle"></i> WhatsApp Bridal Concierge Inquiry
+            </a>
+          </div>
+          <!-- Specifications Accordion -->
+          <div class="border-t gold-border-subtle pt-4 text-xs space-y-3">
+            <div class="flex justify-between py-1 border-b gold-border-subtle text-charcoal-muted">
+              <span>Fabric &amp; Texture</span>
+              <span class="text-charcoal font-medium">Pure Mulberry Silk &amp; Heavy Silk Organza</span>
+            </div>
+            <div class="flex justify-between py-1 border-b gold-border-subtle text-charcoal-muted">
+              <span>Embroidery Technique</span>
+              <span class="text-charcoal font-medium">Hand Zardozi, Mukaish &amp; Dabka Work</span>
+            </div>
+            <div class="flex justify-between py-1 border-b gold-border-subtle text-charcoal-muted">
+              <span>Components</span>
+              <span class="text-charcoal font-medium">16-Kali Lehenga, Blouse, 2 Dupattas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ---------------- PAGE 4: SHOPPING BAG & CHECKOUT ---------------- -->
+    <section class="screen-view hidden fade-in max-w-3xl mx-auto space-y-6" id="screen-bag">
+      <div class="border-b gold-border-subtle pb-4 flex justify-between items-end">
+        <div>
+          <span class="text-gold text-[10px] tracking-[0.3em] uppercase font-bold">Cart Reservation</span>
+          <h2 class="font-serif text-3xl text-charcoal">Your Atelier Bag</h2>
+        </div>
+        <span class="text-xs text-charcoal-muted">Session reserved: 28 mins</span>
+      </div>
+      <div class="space-y-4">
+        <!-- Item 1 -->
+        <div class="bg-ivory-surface p-4 rounded-xl border gold-border-subtle flex gap-4 items-center">
+          <img alt="Lehenga Item" class="w-20 h-24 object-cover rounded-lg" src="images/Noor-main.jpg" />
+          <div class="flex-grow space-y-1">
+            <span class="text-[9px] uppercase tracking-wider text-charcoal-muted">Bridal Couture</span>
+            <h4 class="font-serif text-base text-charcoal font-medium">Noor-e-Aroosi Crimson Bridal Lehenga</h4>
+            <p class="text-xs text-gold">Made-to-Measure Video Fitting Included</p>
+            <div class="font-serif text-sm font-bold text-burgundy">₹78,500</div>
+          </div>
+          <button class="text-charcoal-muted hover:text-burgundy p-2"><i class="w-4 h-4"
+              data-lucide="trash-2"></i></button>
+        </div>
+        <!-- Item 2 -->
+        <div class="bg-ivory-surface p-4 rounded-xl border gold-border-subtle flex gap-4 items-center">
+          <img alt="Saree Item" class="w-20 h-24 object-cover rounded-lg" src="images/Designer-Sarees.jpg" />
+          <div class="flex-grow space-y-1">
+            <span class="text-[9px] uppercase tracking-wider text-charcoal-muted">Katan Banarasi</span>
+            <h4 class="font-serif text-base text-charcoal font-medium">Maharani Crimson Katan Saree</h4>
+            <p class="text-xs text-gold">Complimentary Fall &amp; Piko Finishing</p>
+            <div class="font-serif text-sm font-bold text-burgundy">₹24,500</div>
+          </div>
+          <button class="text-charcoal-muted hover:text-burgundy p-2"><i class="w-4 h-4"
+              data-lucide="trash-2"></i></button>
+        </div>
+      </div>
+      <!-- Pricing Summary -->
+      <div class="bg-ivory-surface p-6 rounded-xl border gold-border-subtle space-y-3">
+        <div class="flex justify-between text-xs text-charcoal-muted">
+          <span>Subtotal</span>
+          <span>₹103,000</span>
+        </div>
+        <div class="flex justify-between text-xs text-charcoal-muted">
+          <span>Insured Transit &amp; Heritage Packaging</span>
+          <span class="text-burgundy uppercase font-semibold">Complimentary</span>
+        </div>
+        <div class="border-t gold-border-subtle pt-3 flex justify-between items-baseline">
+          <span class="font-serif text-lg text-charcoal font-bold">Total Sanctuary Amount</span>
+          <span class="font-serif text-2xl text-burgundy font-bold">₹103,000</span>
+        </div>
+        <button
+          class="w-full mt-4 py-4 bg-burgundy hover:bg-burgundy-dark text-white text-xs tracking-widest uppercase font-semibold rounded-lg shadow-lg transition"
+          onclick="alert('Proceeding to 256-bit encrypted checkout gateway.')">
+          Proceed To Secure Checkout
+        </button>
+      </div>
+    </section>
+    <!-- ---------------- PAGE 5: DEDICATED BULK MEDIA IMPORT (ZIP & FOLDER) ---------------- -->
+    <section class="screen-view hidden fade-in max-w-4xl mx-auto space-y-6" id="screen-admin-bulk">
+      <div class="border-b gold-border-subtle pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <span class="text-gold text-[10px] tracking-[0.3em] uppercase font-bold">Studio Media Ingestion Engine</span>
+          <h2 class="font-serif text-2xl sm:text-3xl text-charcoal">Bulk Media &amp; Folder Product Import</h2>
+          <p class="text-charcoal-muted text-xs mt-0.5">Parse Instagram folders &amp; ZIP archives into draft bridal
+            collections automatically</p>
+        </div>
+        <span
+          class="px-3 py-1 bg-burgundy text-white rounded text-[10px] uppercase tracking-widest font-bold self-start sm:self-auto">Bulk
+          Importer v2.0</span>
+      </div>
+      <!-- Folder Structure Guide Accordion -->
+      <div class="bg-ivory-surface rounded-xl p-4 border gold-border-subtle text-xs space-y-2">
+        <div class="flex items-center gap-2 text-burgundy font-semibold">
+          <i class="w-4 h-4 text-gold" data-lucide="info"></i>
+          <span>Automated Folder-Parsing Specification:</span>
+        </div>
+        <p class="text-charcoal-muted leading-relaxed">
+          Upload a ZIP file or directory like <code
+            class="bg-ivory-dim px-1.5 py-0.5 rounded text-charcoal font-mono">shipra-products/</code>. Each folder name
+          becomes the candidate product name, numbered files determine media sequence (e.g., <code
+            class="bg-ivory-dim px-1.5 py-0.5 rounded font-mono">01-front.jpg</code> = primary hero, <code
+            class="bg-ivory-dim px-1.5 py-0.5 rounded font-mono">05-video.mp4</code> = drape reel).
+        </p>
+      </div>
+      <!-- Drag & Drop / Selection Zone -->
+      <div
+        class="border-2 border-dashed border-gold/60 rounded-2xl p-8 text-center bg-ivory-surface hover:bg-ivory transition cursor-pointer space-y-4"
+        onclick="document.getElementById('zip-input').click()">
+        <input class="hidden" directory="" id="zip-input" multiple="" onchange="simulateBatchUpload(this)" type="file"
+          webkitdirectory="" />
+        <div class="w-14 h-14 mx-auto rounded-full bg-gold/15 text-gold flex items-center justify-center">
+          <i class="w-7 h-7" data-lucide="archive"></i>
+        </div>
+        <div>
+          <h4 class="font-serif text-lg text-charcoal font-medium">Select Folder or Drop ZIP Archive Here</h4>
+          <p class="text-xs text-charcoal-muted mt-1">Supports JPG, PNG, WebP, AVIF, and MP4 vertical reels (max 150MB
+            per batch)</p>
+        </div>
+        <div class="flex justify-center gap-3">
+          <button
+            class="px-5 py-2.5 bg-burgundy text-white text-xs uppercase tracking-wider font-semibold rounded shadow-md"
+            type="button">
+            Choose Folder / ZIP
+          </button>
+        </div>
+      </div>
+      <!-- Live Upload Progress Simulation State -->
+      <div class="bg-ivory-surface p-4 rounded-xl border gold-border-subtle space-y-2" id="upload-progress-box">
+        <div class="flex justify-between text-xs">
+          <span class="font-medium text-charcoal" id="import-status-text">Batch Pipeline Status: Ready for
+            Ingestion</span>
+          <span class="text-gold font-semibold" id="import-percent">100% Parsed</span>
+        </div>
+        <div class="w-full bg-ivory-dim h-2 rounded-full overflow-hidden">
+          <div class="bg-burgundy h-full rounded-full w-full" id="import-bar"></div>
+        </div>
+      </div>
+      <!-- Folder-by-Folder Candidate Product Previews -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h4 class="text-xs uppercase tracking-wider text-charcoal font-bold">Identified Candidate Products (3 Queued)
+          </h4>
+          <span class="text-xs text-charcoal-muted">All drafts require pricing validation before publish</span>
+        </div>
+        <!-- Candidate 1: Bridal Lehenga -->
+        <div class="p-4 bg-ivory-surface rounded-xl border gold-border-subtle space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b gold-border-subtle pb-3">
+            <div class="flex items-center gap-3">
+              <span
+                class="w-6 h-6 rounded-full bg-burgundy/10 text-burgundy flex items-center justify-center text-xs font-bold">1</span>
+              <div>
+                <input
+                  class="font-serif text-sm font-semibold text-charcoal bg-transparent border-b border-transparent hover:border-gold focus:border-burgundy focus:outline-none"
+                  type="text" value="Bridal-Lehenga-Crimson-Velvet" />
+                <p class="text-[10px] text-charcoal-muted">Folder: <span class="font-mono">/Bridal-Lehenga-01/</span> •
+                  5 Media Items (4 JPG, 1 MP4)</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <select class="text-xs bg-ivory border gold-border-subtle rounded px-2.5 py-1">
+                <option selected="">Category: Bridal Lehenga</option>
+                <option>Category: Saree</option>
+              </select>
+              <span class="px-2 py-0.5 bg-yellow-100 text-yellow-800 rounded text-[10px] font-medium">Pending
+                Review</span>
+            </div>
+          </div>
+          <!-- Thumbnail Strip with Hero Badge -->
+          <div class="grid grid-cols-5 gap-2 text-center text-[10px]">
+            <div class="relative rounded-lg overflow-hidden border-2 border-burgundy aspect-square">
+              <img alt="01" class="w-full h-full object-cover"
+                src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
+              <span class="absolute top-1 left-1 bg-burgundy text-white text-[8px] px-1 rounded uppercase">Cover</span>
+              <span class="absolute bottom-1 right-1 bg-black/60 text-white text-[8px] px-1 rounded">01-front</span>
+            </div>
+            <div class="relative rounded-lg overflow-hidden border gold-border-subtle aspect-square">
+              <img alt="02" class="w-full h-full object-cover"
+                src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
+              <span class="absolute bottom-1 right-1 bg-black/60 text-white text-[8px] px-1 rounded">02-back</span>
+            </div>
+            <div class="relative rounded-lg overflow-hidden border gold-border-subtle aspect-square">
+              <img alt="03" class="w-full h-full object-cover"
+                src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
+              <span class="absolute bottom-1 right-1 bg-black/60 text-white text-[8px] px-1 rounded">03-detail</span>
+            </div>
+            <div class="relative rounded-lg overflow-hidden border gold-border-subtle aspect-square">
+              <img alt="04" class="w-full h-full object-cover"
+                src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
+              <span class="absolute bottom-1 right-1 bg-black/60 text-white text-[8px] px-1 rounded">04-flare</span>
+            </div>
+            <div
+              class="relative rounded-lg overflow-hidden bg-charcoal text-gold flex flex-col items-center justify-center border gold-border-subtle aspect-square">
+              <i class="w-5 h-5" data-lucide="video"></i>
+              <span class="text-[9px] mt-1 text-white">05-video.mp4</span>
+            </div>
+          </div>
+          <!-- Pricing & Stock Fields -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-xs">
+            <div>
+              <label class="text-[10px] text-charcoal-muted uppercase">Price (INR) *</label>
+              <input class="w-full mt-0.5 p-1.5 rounded bg-ivory border gold-border-subtle" type="text"
+                value="₹78,500" />
+            </div>
+            <div>
+              <label class="text-[10px] text-charcoal-muted uppercase">SKU Code</label>
+              <input class="w-full mt-0.5 p-1.5 rounded bg-ivory border gold-border-subtle" type="text"
+                value="SS-BL-01" />
+            </div>
+            <div>
+              <label class="text-[10px] text-charcoal-muted uppercase">Initial Stock</label>
+              <input class="w-full mt-0.5 p-1.5 rounded bg-ivory border gold-border-subtle" type="number" value="3" />
+            </div>
+            <div class="flex items-end">
+              <button
+                class="w-full py-2 bg-burgundy hover:bg-burgundy-dark text-white rounded text-xs uppercase tracking-wider font-semibold"
+                onclick="alert('Candidate verified and added to draft catalog!')">
+                Save Candidate
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Candidate 2: Designer Saree -->
+        <div class="p-4 bg-ivory-surface rounded-xl border gold-border-subtle space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b gold-border-subtle pb-3">
+            <div class="flex items-center gap-3">
+              <span
+                class="w-6 h-6 rounded-full bg-burgundy/10 text-burgundy flex items-center justify-center text-xs font-bold">2</span>
+              <div>
+                <input
+                  class="font-serif text-sm font-semibold text-charcoal bg-transparent border-b border-transparent hover:border-gold focus:border-burgundy focus:outline-none"
+                  type="text" value="Designer-Banarasi-Crimson-Katan" />
+                <p class="text-[10px] text-charcoal-muted">Folder: <span class="font-mono">/Designer-Saree-01/</span> •
+                  3 Media Items (3 JPG)</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <select class="text-xs bg-ivory border gold-border-subtle rounded px-2.5 py-1">
+                <option>Category: Bridal Lehenga</option>
+                <option selected="">Category: Saree</option>
+              </select>
+              <span class="px-2 py-0.5 bg-green-100 text-green-800 rounded text-[10px] font-medium">Ready to
+                Publish</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-5 gap-2 text-center text-[10px]">
+            <div class="relative rounded-lg overflow-hidden border-2 border-burgundy aspect-square">
+              <img alt="01" class="w-full h-full object-cover"
+                src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
+              <span class="absolute top-1 left-1 bg-burgundy text-white text-[8px] px-1 rounded uppercase">Cover</span>
+            </div>
+            <div class="relative rounded-lg overflow-hidden border gold-border-subtle aspect-square">
+              <img alt="02" class="w-full h-full object-cover"
+                src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
+              <span class="absolute bottom-1 right-1 bg-black/60 text-white text-[8px] px-1 rounded">02-pallu</span>
+            </div>
+            <div class="relative rounded-lg overflow-hidden border gold-border-subtle aspect-square">
+              <img alt="03" class="w-full h-full object-cover"
+                src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" />
+              <span class="absolute bottom-1 right-1 bg-black/60 text-white text-[8px] px-1 rounded">03-border</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-xs">
+            <div>
+              <label class="text-[10px] text-charcoal-muted uppercase">Price (INR) *</label>
+              <input class="w-full mt-0.5 p-1.5 rounded bg-ivory border gold-border-subtle" type="text"
+                value="₹24,500" />
+            </div>
+            <div>
+              <label class="text-[10px] text-charcoal-muted uppercase">SKU Code</label>
+              <input class="w-full mt-0.5 p-1.5 rounded bg-ivory border gold-border-subtle" type="text"
+                value="SS-BN-108" />
+            </div>
+            <div>
+              <label class="text-[10px] text-charcoal-muted uppercase">Initial Stock</label>
+              <input class="w-full mt-0.5 p-1.5 rounded bg-ivory border gold-border-subtle" type="number" value="1" />
+            </div>
+            <div class="flex items-end">
+              <button
+                class="w-full py-2 bg-green-800 hover:bg-green-900 text-white rounded text-xs uppercase tracking-wider font-semibold"
+                onclick="alert('Published to live storefront!')">
+                Publish Live
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ---------------- PAGE 6: ADMIN STUDIO MANAGEMENT DASHBOARD ---------------- -->
+    <section class="screen-view hidden fade-in max-w-4xl mx-auto space-y-6" id="screen-admin-dashboard">
+      <div class="border-b gold-border-subtle pb-4 flex justify-between items-center">
+        <div>
+          <span class="text-gold text-[10px] tracking-[0.3em] uppercase font-bold">Atelier Core Studio</span>
+          <h2 class="font-serif text-2xl sm:text-3xl text-charcoal">E-Commerce Management</h2>
+        </div>
+        <span class="px-3 py-1 bg-burgundy text-white rounded text-[10px] uppercase tracking-widest font-bold">Master
+          Admin</span>
+      </div>
+      <!-- Overview Stats -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="bg-ivory-surface p-4 rounded-xl border gold-border-subtle">
+          <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Total Products</p>
+          <h4 class="font-serif text-2xl font-bold text-burgundy">48</h4>
+          <span class="text-[10px] text-green-700">36 Live • 12 Draft</span>
+        </div>
+        <div class="bg-ivory-surface p-4 rounded-xl border gold-border-subtle">
+          <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Bridal Lehengas</p>
+          <h4 class="font-serif text-2xl font-bold text-charcoal">18</h4>
+          <span class="text-[10px] text-charcoal-muted">All Bespoke Active</span>
+        </div>
+        <div class="bg-ivory-surface p-4 rounded-xl border gold-border-subtle">
+          <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Sarees Registered</p>
+          <h4 class="font-serif text-2xl font-bold text-charcoal">30</h4>
+          <span class="text-[10px] text-charcoal-muted">Banarasi &amp; Kanjivaram</span>
+        </div>
+        <div class="bg-ivory-surface p-4 rounded-xl border gold-border-subtle">
+          <p class="text-[10px] uppercase tracking-wider text-charcoal-muted">Recent Inquiries</p>
+          <h4 class="font-serif text-2xl font-bold text-gold">14</h4>
+          <span class="text-[10px] text-charcoal-muted">WhatsApp Concierge</span>
+        </div>
+      </div>
+      <!-- Quick Actions -->
+      <div class="flex flex-wrap gap-3">
+        <button
+          class="px-5 py-2.5 bg-burgundy hover:bg-burgundy-dark text-white rounded text-xs uppercase tracking-wider font-semibold flex items-center gap-2"
+          onclick="switchScreen('admin-bulk')">
+          <i class="w-4 h-4" data-lucide="folder-up"></i> Bulk Import ZIP/Folder
+        </button>
+        <button
+          class="px-5 py-2.5 bg-ivory-surface border gold-border-subtle hover:border-burgundy rounded text-xs uppercase tracking-wider font-semibold flex items-center gap-2"
+          onclick="switchScreen('catalogue')">
+          <i class="w-4 h-4" data-lucide="external-link"></i> Preview Live Storefront
+        </button>
+      </div>
+    </section>
+  </main>
+  <!-- ================= 3. MOBILE FIXED NAVIGATION BAR ================= -->
+  <nav
+    class="lg:hidden sticky bottom-0 z-40 bg-ivory-surface border-t gold-border-subtle py-2.5 px-4 flex justify-around items-center">
+    <button class="flex flex-col items-center text-[10px] uppercase tracking-wider text-charcoal hover:text-burgundy"
+      onclick="switchScreen('home')">
+      <i class="w-5 h-5" data-lucide="home"></i>
+      <span class="mt-1">Atelier</span>
+    </button>
+    <button class="flex flex-col items-center text-[10px] uppercase tracking-wider text-burgundy font-semibold"
+      onclick="filterByCat('lehenga'); switchScreen('catalogue');">
+      <i class="w-5 h-5 text-burgundy" data-lucide="sparkles"></i>
+      <span class="mt-1">Bridal</span>
+    </button>
+    <button class="flex flex-col items-center text-[10px] uppercase tracking-wider text-charcoal hover:text-burgundy"
+      onclick="filterByCat('saree'); switchScreen('catalogue');">
+      <i class="w-5 h-5" data-lucide="grid"></i>
+      <span class="mt-1">Sarees</span>
+    </button>
+    <button class="flex flex-col items-center text-[10px] uppercase tracking-wider text-charcoal hover:text-burgundy"
+      onclick="switchScreen('bag')">
+      <i class="w-5 h-5" data-lucide="shopping-bag"></i>
+      <span class="mt-1">Bag</span>
+    </button>
+    <button class="flex flex-col items-center text-[10px] uppercase tracking-wider text-charcoal hover:text-burgundy"
+      onclick="switchScreen('admin-bulk')">
+      <i class="w-5 h-5 text-gold" data-lucide="folder-up"></i>
+      <span class="mt-1">Import</span>
+    </button>
+  </nav>
+  <!-- ================= 4. JAVASCRIPT STATE ENGINE ================= -->
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+
+    // Tab Switching Router
+    function switchScreen(screenId) {
+      document.querySelectorAll('.screen-view').forEach(screen => {
+        screen.classList.add('hidden');
+      });
+      const activeScreen = document.getElementById('screen-' + screenId);
+      if (activeScreen) {
+        activeScreen.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        lucide.createIcons();
+      }
+    }
+
+    // Category Filter in Catalogue
+    function filterByCat(category) {
+      const items = document.querySelectorAll('.product-item');
+      const heading = document.getElementById('catalogue-heading');
+      const count = document.getElementById('catalogue-count');
+
+      document.querySelectorAll('.cat-tab').forEach(t => {
+        t.className = 'cat-tab px-3.5 py-1.5 bg-ivory-surface border gold-border-subtle rounded text-xs uppercase tracking-wider hover:border-burgundy';
+      });
+
+      let matchCount = 0;
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.classList.remove('hidden');
+          matchCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      if (category === 'lehenga') {
+        const tab = document.getElementById('tab-lehenga');
+        if (tab) tab.className = 'cat-tab px-3.5 py-1.5 bg-burgundy text-white rounded text-xs uppercase tracking-wider font-medium';
+        if (heading) heading.innerText = 'Bridal Lehengas Atelier';
+        if (count) count.innerText = 'Displaying ' + matchCount + ' Handcrafted Bridal Lehengas';
+      } else if (category === 'saree') {
+        const tab = document.getElementById('tab-saree');
+        if (tab) tab.className = 'cat-tab px-3.5 py-1.5 bg-burgundy text-white rounded text-xs uppercase tracking-wider font-medium';
+        if (heading) heading.innerText = 'Heritage Saree Archives';
+        if (count) count.innerText = 'Displaying ' + matchCount + ' Handloom Banarasi & Kanjivaram Sarees';
+      } else {
+        const tab = document.getElementById('tab-all');
+        if (tab) tab.className = 'cat-tab px-3.5 py-1.5 bg-burgundy text-white rounded text-xs uppercase tracking-wider font-medium';
+        if (heading) heading.innerText = 'All Couture & Bridal Archives';
+        if (count) count.innerText = 'Displaying ' + matchCount + ' Verified Creations';
+      }
+    }
+
+    // Detail Image Switcher
+    function setMainImage(imgUrl, triggerBtn) {
+      const mainImg = document.getElementById('main-product-img');
+      if (mainImg) mainImg.src = imgUrl;
+
+      document.querySelectorAll('.detail-thumb').forEach(btn => {
+        btn.className = 'detail-thumb rounded-lg overflow-hidden border gold-border-subtle aspect-square';
+      });
+      if (triggerBtn) {
+        triggerBtn.className = 'detail-thumb rounded-lg overflow-hidden border-2 border-burgundy aspect-square';
+      }
+    }
+
+    // Add to Bag Action
+    function addToBagAndOpen(title, price, img) {
+      const counter = document.getElementById('cart-counter');
+      if (counter) counter.innerText = parseInt(counter.innerText) + 1;
+      switchScreen('bag');
+    }
+
+    function toggleMobileMenu() {
+      switchScreen('catalogue');
+    }
+
+    // =============================================================
+    // 19. ADVANCED AUTO-SLIDING CAROUSEL ENGINE (Pause on hover)
+    // =============================================================
+    const carousels = document.querySelectorAll('.product-card');
+
+    carousels.forEach(card => {
+      const imagesData = card.getAttribute('data-images');
+      if (!imagesData) return;
+
+      const images = JSON.parse(imagesData);
+      if (images.length <= 1) return; // Never slide if only 1 image
+
+      let intervalId = null;
+      let currentIndex = 0;
+      const imgEl = card.querySelector('.carousel-image');
+      const dots = card.querySelectorAll('.carousel-dots .dot');
+
+      function advance() {
+        currentIndex = (currentIndex + 1) % images.length;
+        if (imgEl) {
+          imgEl.style.opacity = '0.6';
+          setTimeout(() => {
+            imgEl.src = images[currentIndex];
+            imgEl.style.opacity = '1';
+          }, 150);
+        }
+        dots.forEach((dot, idx) => {
+          dot.className = idx === currentIndex
+            ? 'dot w-1.5 h-1.5 rounded-full bg-white'
+            : 'dot w-1.5 h-1.5 rounded-full bg-white/40';
+        });
+      }
+
+      function startSliding() {
+        if (!intervalId) {
+          intervalId = setInterval(advance, 3200);
+        }
+      }
+
+      function stopSliding() {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      }
+
+      // Start automatic progression
+      startSliding();
+
+      // Pause on hover
+      card.addEventListener('mouseenter', stopSliding);
+      card.addEventListener('mouseleave', startSliding);
+    });
+
+    // Bulk folder import simulation
+    function simulateBatchUpload(input) {
+      const statusText = document.getElementById('import-status-text');
+      const percentText = document.getElementById('import-percent');
+      const bar = document.getElementById('import-bar');
+
+      if (!statusText) return;
+      statusText.innerText = "Analyzing folder hierarchy & grouping media into candidate products...";
+      bar.style.width = "35%";
+      percentText.innerText = "35%";
+
+      setTimeout(() => {
+        bar.style.width = "75%";
+        percentText.innerText = "75%";
+        statusText.innerText = "Numbering order parsed: /01-front.jpg, /05-video.mp4 assigned...";
+      }, 700);
+
+      setTimeout(() => {
+        bar.style.width = "100%";
+        percentText.innerText = "100%";
+        statusText.innerText = "Successfully identified 3 Candidate Products with 8 assets!";
+      }, 1400);
+    }
+  </script>
+</body>
+
+</html>
